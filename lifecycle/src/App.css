@@ -1,0 +1,27 @@
+body {
+  background-color: #060606;
+}
+
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+h1 {
+  color: khaki;
+}
+
+#content {
+  color: lightsalmon;
+}
+
+#content button {
+  font-size: 1.3em;
+  color: lightsalmon;
+  background-color: #000;
+}
