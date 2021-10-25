@@ -1,14 +1,21 @@
-import './App.css';
+import './App.css'
+import Button from './Button'
+import ComponenteA from './ComponenteA'
+import ComponenteB from './ComponenteB'
 
-const title = <h1>React</h1>
-const element = "This is React - so, react!!!"
+function soma(a, b) {
+  alert(a + b)
+}
 
 function App() {
   return (
     <div className="App">
       <section id="content">
-        {title}
-        {element}
+        <ComponenteA>
+          <ComponenteB>
+            <Button onClick={() => soma(10, 20)} name="10 + 20" />
+          </ComponenteB>
+        </ComponenteA>
       </section>
     </div>
   );
