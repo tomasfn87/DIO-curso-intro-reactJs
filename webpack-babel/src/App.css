@@ -1,37 +1,67 @@
 body {
-    color: whitesmoke;
+  color: whitesmoke;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 a {
-    color: deepskyblue;
-    text-decoration: none;
-    font-weight: 600;
+  color: deepskyblue;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 a:hover {
-    color: greenyellow;
+  color: greenyellow;
 }
 
 #customer {
-    color: orange;
+  color: orange;
 }
 
 li {
-    font-size: 1.05em;
+  font-size: 1.05em;
 }
 
 .customers-table {
-    background-color: #050505;
-    color: ghostwhite;
-    width: 16em;
+  background-color: #050505;
+  color: ghostwhite;
+  width: 16em;
 }
 
 .customers-table thead {
-    background-color: #131313;
-    text-align: center;
-    font-size: 1.2em;
+  background-color: #131313;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 img {
-    height:30em;
+  height:30em;
+}
+
+button {
+  font-size: .91em;
+  background-color: black;
+  color: lightgreen;
+  padding: .7em;
+  border-color: rgba(37, 37, 37, 0.356);
+  border-style: solid;
+  border-radius: .62em;
+  box-shadow: 2px 2px 5px #000;
+}
+
+button:hover {
+  border-style: solid;
+  border-color:rgba(6, 48, 24, 0.473);
+  color: #fff;
+  background-color: green;
+  box-shadow: 2px 2px 14px #333;
+}
+
+#esconder-alunas {
+  color: coral;
+}
+
+#esconder-alunas:hover {
+  color: #fff;
+  background-color: darkred;
+  border-color: rgba(66, 3, 3, 0.507);
 }

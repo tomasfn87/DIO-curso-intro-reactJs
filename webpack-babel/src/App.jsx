@@ -27,6 +27,20 @@ const customers2 = [
 
 const showCustomer = (customer) => (
   <span id="customer">{customer}</span>
+  )
+  
+const button = (btnText, fn, id) => 
+  <button id={id} onClick={fn}>{btnText}</button>
+
+const textAndButton = (text, buttonText, fn, id) => (
+  <div>
+    <p>
+      {text}
+    </p>
+    <p>
+      {button(buttonText, fn, id)}
+    </p>
+  </div>
 )
 
 const renderCustomer = (customer) => {
@@ -60,25 +74,40 @@ const renderCustomersTable = (arr1, arr2) => (
   </table>
 )
 
-const handleChange = (e) => {
+/* const handleChange = (e) => {
   const { value } = e.target
   console.log(value)
-}
+} */
+
+// Main App
 const App = () => {
   
   const [viewCostumers, setViewCostumers] = useState(<p></p>)
   const [hideCostumers, setHideCostumers] = useState(<p></p>)
 
-  const button = (btnText, fn) => <button onClick={fn}>{btnText}</button>
-
-  const textForButton = (text, buttonText, fn) => (
-    <div>
-      <p>
-        {text}
-      </p>
-      <p>
-        {button(buttonText, fn)}
-      </p>
+  const renderButtonsTable = () => (
+    <div id="customers-table">
+      {textAndButton(
+        "Clique no botão para ver a lista de alunas",
+        "Ver alunas",
+        () => {
+          setViewCostumers(
+            renderCustomersTable(customers1, customers2)
+          )
+          setHideCostumers(textAndButton(
+            "Clique no botão para esconder a lista de alunas",
+            "Esconder alunas",
+            () => {
+              setViewCostumers(<p></p>)
+              setHideCostumers(<p></p>)
+            },
+            "esconder-alunas"
+          ))
+        },
+        "ver-alunas"
+      )}
+      {viewCostumers}
+      {hideCostumers}
     </div>
   )
 
@@ -98,27 +127,7 @@ const App = () => {
           <div>
             <h2>In nomine Patris et Filii et Spiritus Sancti - Amen</h2>
             <h3>Bem vindo à nossa aula, {showCustomer(`${customer}`)}!</h3>
-            <div id="customers-table">
-              {textForButton(
-                "Clique no botão para ver a lista de alunas",
-                "Ver alunas",
-                () => {
-                  setViewCostumers(
-                    renderCustomersTable(customers1, customers2)
-                  )
-                  setHideCostumers(textForButton(
-                    "Clique no botão para esconder a lista de alunas",
-                    "Esconder alunas",
-                    () => {
-                      setViewCostumers(<p></p>) 
-                      setHideCostumers(<p></p>)
-                    }
-                  ))
-                }
-              )}
-              {viewCostumers}
-              {hideCostumers}
-            </div>
+            {renderButtonsTable()}
             {/* <input onChange={handleChange} /> */}
           </div>
         </div>
