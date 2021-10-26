@@ -3,11 +3,22 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import Users from './components/Users.jsx'
 import Home from './components/Home.jsx'
 
-const botao1 = <button>Histórico dos clientes</button>
-const botao2 = <button>Botão 2</button>
-let hasCustomer = true
+const button = (buttonText) => <button>{buttonText}</button>
 
+const textButton = (text, buttonText) => (
+  <div><p>{text}</p><p>{button(`${buttonText}`)}</p></div>
+)
+
+let isACustomer = true
+
+const customer = "Cæsar"
+
+const showCustomer = (customer) => (
+  <span>{customer}</span>
+)
+  
 const App = () => {
+      
   return (
     <div>
       <Router>
@@ -30,14 +41,14 @@ const App = () => {
       </Router>
       <div>
         <h3>Digital Innovation One</h3>
-        <p>Bem vindo à nossa aula.</p>
+        <p>Bem vindo à nossa aula, {showCustomer(`${customer}`)}!</p>
       </div>
-      {hasCustomer && (
-        <div>
-          Clique no botão abaixo para visualizar o histórico dos clientes
-          <br />{botao1}
-        </div>
-      )}
+
+      {isACustomer ?
+        (textButton("Clique para ver o histórico", "Ver histórico"))
+        :(textButton("Clique para se inscrever", "Cadastrar-se"))
+      }
+
     </div>
   )
 }
