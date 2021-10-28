@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 import { useState } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-import Users from './components/Users.jsx'
-import Home from './components/Home.jsx'
+import Users from "./components/Users.jsx"
+import Home from "./components/Home.jsx"
 import "./App.css"
 
 const customer = "Cæsar"
@@ -27,18 +27,19 @@ const customers2 = [
 
 const showCustomer = (customer) => (
   <span id="customer">{customer}</span>
-  )
-  
-const button = (btnText, fn, id) => 
-  <button id={id} onClick={fn}>{btnText}</button>
+)
 
-const textAndButton = (text, buttonText, fn, id) => (
+const button = (btnText, id, fn) => (
+  <button id={id} onClick={fn}>{btnText}</button>
+)
+
+const textAndButton = (text, btnText, id, fn) => (
   <div>
     <p>
       {text}
     </p>
     <p>
-      {button(buttonText, fn, id)}
+      {button(btnText, id, fn)}
     </p>
   </div>
 )
@@ -85,26 +86,20 @@ const App = () => {
   const [viewCostumers, setViewCostumers] = useState(<p></p>)
   const [hideCostumers, setHideCostumers] = useState(<p></p>)
 
-  const renderButtonsTable = () => (
+  const renderButtonsAndTable = () => (
     <div id="customers-table">
       {textAndButton(
         "Clique no botão para ver a lista de alunas",
-        "Ver alunas",
-        () => {
-          setViewCostumers(
-            renderCustomersTable(customers1, customers2)
-          )
+        "Ver alunas", "ver-alunas", () => {
+          setViewCostumers(renderCustomersTable(customers1, customers2))
           setHideCostumers(textAndButton(
             "Clique no botão para esconder a lista de alunas",
-            "Esconder alunas",
-            () => {
+            "Esconder alunas", "esconder-alunas", () => {
               setViewCostumers(<p></p>)
               setHideCostumers(<p></p>)
-            },
-            "esconder-alunas"
-          ))
-        },
-        "ver-alunas"
+            }
+          )
+        )}
       )}
       {viewCostumers}
       {hideCostumers}
@@ -125,9 +120,9 @@ const App = () => {
             </span>
           </nav>
           <div>
-            <h2>In nomine Patris et Filii et Spiritus Sancti - Amen</h2>
-            <h3>Bem vindo à nossa aula, {showCustomer(`${customer}`)}!</h3>
-            {renderButtonsTable()}
+            <h3>In nomine Patris et Filii et Spiritus Sancti - Amen</h3>
+            <h4>Bem vindo à nossa aula, {showCustomer(`${customer}`)}!</h4>
+            {renderButtonsAndTable()}
             {/* <input onChange={handleChange} /> */}
           </div>
         </div>
